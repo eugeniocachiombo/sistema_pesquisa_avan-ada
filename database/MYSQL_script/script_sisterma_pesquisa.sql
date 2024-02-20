@@ -15,7 +15,7 @@ create table cidadao_nacional (
     data_validade date,
     sexo enum('M', 'F'),
     estado_civil varchar(20),
-    altura decimal(3,1),
+    altura decimal(3,2),
     residencia varchar(30),
     provincia varchar(30)
 );

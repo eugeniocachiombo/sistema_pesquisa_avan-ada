@@ -1,5 +1,5 @@
 <form action="/cidadao_nacional/registrar" method="post">
-
+    @csrf
     <label for="nome">Nome do Cidadão </label> <br>
     <input type="text" name="nome" id="nome"> <br>
 

@@ -1,4 +1,4 @@
-<form action="">
+<form action="/cidadao_nacional/registrar" method="post">
 
     <label for="">nome </label>
     <input type="text" name="" id="">
@@ -39,4 +39,5 @@
     <label for="">provincia</label>
     <input type="text" name="" id="">
 
+    <input type="submit" value="Registrar">
 </form>

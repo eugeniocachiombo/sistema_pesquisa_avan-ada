@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: verdana;
 }
 
 header{
@@ -22,4 +23,19 @@ footer{
 .button{
     background-color: crimson;
     color: yellow;
+}
+
+.select{
+    /*background-color: rgb(5, 83, 128);*/
+    background-color: rgb(185, 209, 221);
+    color: yellow;
+}
+
+.select option{
+    background-color: crimson;
+    color: yellow;
+}
+
+input[type="text"]{
+    color: crimson;
 }

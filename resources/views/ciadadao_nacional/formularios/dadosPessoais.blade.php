@@ -1,38 +1,74 @@
-@csrf
-<label for="nome">Nome do Cidadão </label> <br>
-<input type="text" name="nome" id="nome"> <br>
+<div class="container" style="">
+    @csrf
+    <div class="row g-3">
+        <div class="col-6">
+            <label for="nome">Nome do Cidadão </label> <br>
+            <input class="form-control" type="text" name="nome" id="nome">
+        </div>
 
-<label for="numero_bi">Número do BI</label> <br>
-<input type="text" name="numero_bi" id="numero_bi"> <br>
+        <div class="col-6">
+            <label for="numero_bi">Número do BI</label> <br>
+            <input class="form-control" type="text" name="numero_bi" id="numero_bi">
 
-<label for="naturalidade">Naturalidade</label> <br>
-<input type="text" name="naturalidade" id="naturalidade"> <br>
+        </div>
 
-<label for="nome_pai">Nome do Pai</label> <br>
-<input type="text" name="nome_pai" id="nome_pai"> <br>
 
-<label for="nome_mae">Nome da mãe</label> <br>
-<input type="text" name="nome_mae" id="nome_mae"> <br>
+        <dvi class="col-6">
+            <label for="naturalidade">Naturalidade</label> <br>
+            <input class="form-control" type="text" name="naturalidade" id="naturalidade">
 
-<label for="">Sexo</label> <br>
-<select name="sexo" id="sexo">
-    <option value="">Selecione...</option>
-    <option value="M">Masculino</option>
-    <option value="F">Femenino</option>
-</select> <br>
+        </dvi>
 
-<label for="">Estado civil</label> <br>
-<select name="estado_civil" id="estado_civil">
-    <option value="">Selecione...</option>
-    <option value="solteiro">Solteiro</option>
-    <option value="casado">Casado</option>
-</select> <br>
+        <div class="col-6">
+            <label for="nome_pai">Nome do Pai</label> <br>
+            <input class="form-control" type="text" name="nome_pai" id="nome_pai">
 
-<label for="">Altura</label> <br>
-<input type="number" name="altura" id="altura"> <br>
+        </div>
 
-<label for="">Residência</label> <br>
-<input type="text" name="residencia" id="residencia"> <br>
+        <div class="col-6">
+            <label for="nome_mae">Nome da mãe</label> <br>
+            <input class="form-control" type="text" name="nome_mae" id="nome_mae">
+        </div>
 
-<label for="">Província</label> <br>
-<input type="text" name="provincia" id="provincia"> <br>
+        <div class="col-6 ">
+            <label for="">Sexo</label> <br>
+            <div class="col-12 d-flex align-items-center" style="min-width: inherit">
+                <select class="form-control select" name="sexo" id="sexo">
+                    <option value="">Selecione...</option>
+                    <option value="M">Masculino</option>
+                    <option value="F">Femenino</option>
+                </select> <i class="fas fa-chevron-circle-down"
+                style="color: white; position: relative; left: -32px;"></i>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <label for="">Estado civil</label> <br>
+            <div class="col-12 d-flex align-items-center" style="min-width: inherit">
+            <select class="form-control select" name="estado_civil" id="estado_civil">
+                <option value="">Selecione...</option>
+                <option value="solteiro">Solteiro</option>
+                <option value="casado">Casado</option>
+            </select> <i class="fas fa-chevron-circle-down"
+            style="color: white; position: relative; left: -32px;"></i>
+        </div>
+        </div>
+
+        <div class="col-6">
+            <label for="">Altura</label> <br>
+            <input class="form-control" type="number" name="altura" id="altura">
+
+        </div>
+
+        <div class="col-6">
+            <label for="">Residência</label> <br>
+            <input class="form-control" type="text" name="residencia" id="residencia">
+        </div>
+
+        <div class="col-6">
+            <label for="">Província</label> <br>
+            <input class="form-control" type="text" name="provincia" id="provincia">
+        </div>
+
+    </div>
+</div>

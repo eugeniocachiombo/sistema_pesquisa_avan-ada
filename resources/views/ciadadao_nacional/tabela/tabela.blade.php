@@ -1,4 +1,6 @@
-<div class="container">
+
+
+<div class="container pt-2">
     <div class="col-12" style="overflow: auto;">
         <table class="table table-sm table-hover" >
             <thead class="table-dark ">
@@ -39,9 +41,11 @@
                 @endforeach
             </tbody>
         </table>
+        
+    </div>
+    <div class="py-4">
+        {{ $resultado->links() }}
     </div>
 </div>
 
-<div class="py-4">
-    {{ $resultado->links() }}
-</div>
+

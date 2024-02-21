@@ -93,10 +93,10 @@ class CidadaoNacionalController extends Controller
             "ano_nascimento_terminal" => $ano_nascimento_terminal,
         ];
         $nova_condicao = $this->verficarComponentesComValores($componentes, $condicao);
-        $resultado = $this->verficarCondicao($nova_condicao);
-        if($resultado){
+        $resultado = $this->verficarCondicaoParaCadastrar($nova_condicao);
+        if ($resultado) {
             return view('ciadadao_nacional.pesquisa.pesquisa', compact("resultado"));
-        }else{
+        } else {
             return view('ciadadao_nacional.pesquisa.pesquisa');
         }
     }
@@ -145,7 +145,7 @@ class CidadaoNacionalController extends Controller
 
         if (!empty($componentes['mes_nascimento_terminal']) && !empty($componentes['ano_nascimento_terminal']) && !empty($componentes['mes_nascimento_inicial']) && !empty($componentes['ano_nascimento_inicial'])) {
             $nascimento_inicial_tratado = $componentes['ano_nascimento_inicial'] . "-" . $componentes['mes_nascimento_inicial'] . "-01";
-            $nascimento_terminal_tratado = $componentes['ano_nascimento_terminal']  . "-" . $componentes['mes_nascimento_terminal'] . "-31";
+            $nascimento_terminal_tratado = $componentes['ano_nascimento_terminal'] . "-" . $componentes['mes_nascimento_terminal'] . "-31";
             $condicao[] = "data_nascimento between '{$nascimento_inicial_tratado}' and '{$nascimento_terminal_tratado}' ";
         } else if (!empty($componentes['mes_nascimento_inicial']) && !empty($componentes['ano_nascimento_inicial'])) {
             $condicao[] = "month(data_nascimento) = '{$componentes['mes_nascimento_inicial']}' and year(data_nascimento) = '{$componentes['ano_nascimento_inicial']}'";
@@ -153,7 +153,7 @@ class CidadaoNacionalController extends Controller
 
         if (!empty($componentes['mes_emissao_terminal']) && !empty($componentes['ano_emissao_terminal']) && !empty($componentes['mes_emissao_inicial']) && !empty($componentes['ano_emissao_inicial'])) {
             $emissao_inicial_tratado = $componentes['ano_emissao_inicial'] . "-" . $componentes['mes_emissao_inicial'] . "-01";
-            $emissao_terminal_tratado = $componentes['ano_emissao_terminal']  . "-" . $componentes['mes_emissao_terminal'] . "-31";
+            $emissao_terminal_tratado = $componentes['ano_emissao_terminal'] . "-" . $componentes['mes_emissao_terminal'] . "-31";
             $condicao[] = "data_emissao between '{$emissao_inicial_tratado}' and '{$emissao_terminal_tratado}' ";
         } else if (!empty($componentes['mes_emissao_inicial']) && !empty($componentes['ano_emissao_inicial'])) {
             $condicao[] = "month(data_emissao) = '{$componentes['mes_emissao_inicial']}' and year(data_emissao) = '{$componentes['ano_emissao_inicial']}'";
@@ -161,7 +161,7 @@ class CidadaoNacionalController extends Controller
 
         if (!empty($componentes['mes_validade_terminal']) && !empty($componentes['ano_validade_terminal']) && !empty($componentes['mes_validade_inicial']) && !empty($componentes['ano_validade_inicial'])) {
             $validade_inicial_tratado = $componentes['ano_validade_inicial'] . "-" . $componentes['mes_validade_inicial'] . "-01";
-            $validade_terminal_tratado = $componentes['ano_validade_terminal']  . "-" . $componentes['mes_validade_terminal'] . "-31";
+            $validade_terminal_tratado = $componentes['ano_validade_terminal'] . "-" . $componentes['mes_validade_terminal'] . "-31";
             $condicao[] = "data_validade between '{$validade_inicial_tratado}' and '{$validade_terminal_tratado}' ";
         } else if (!empty($componentes['mes_validade_inicial']) && !empty($componentes['ano_validade_inicial'])) {
             $condicao[] = "month(data_validade) = '{$componentes['mes_validade_inicial']}' and year(data_validade) = '{$componentes['ano_validade_inicial']}'";
@@ -170,16 +170,17 @@ class CidadaoNacionalController extends Controller
         return $condicao;
     }
 
-    public function verficarCondicao($condicao){
+    public function verficarCondicaoParaCadastrar($condicao)
+    {
         if (!empty($condicao)) {
             $condicao_final = implode(" and ", $condicao);
             $condicao_final = str_replace("Array", "", $condicao_final);
-
             $query = DB::table('cidadao_nacional')
                 ->whereRaw($condicao_final)
+                ->orderBy('nome', 'ASC')
                 ->paginate(5);
             return $query;
-        } 
+        }
     }
 
 }

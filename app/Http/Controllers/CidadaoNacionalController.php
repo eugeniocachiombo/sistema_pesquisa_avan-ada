@@ -17,16 +17,16 @@ class CidadaoNacionalController extends Controller
 
     function pesquisarDadosPessoais(Request $request) {
       
-        $input_nome = "Eugéno";
-        $input_numero_bi = "";
-        $input_naturalidade = "";
-        $input_nome_pai = "";
-        $input_nome_mae = "";
-        $input_sexo = "";
-        $input_estado_civil = "";
-        $input_altura = "";
-        $input_residencia = "";
-        $input_provincia = "";
+        $input_nome = $request->input("nome");
+        $input_numero_bi = $request->input("numero_bi");
+        $input_naturalidade = $request->input("naturalidade");
+        $input_nome_pai = $request->input("nome_pai");
+        $input_nome_mae = $request->input("nome_mae");
+        $input_sexo = $request->input("sexo");
+        $input_estado_civil = $request->input("estado_civil");
+        $input_altura = $request->input("altura");
+        $input_residencia = $request->input("residencia");
+        $input_provincia = $request->input("provincia");
         $input_mes_emissao_inicial = "";
         $input_ano_emissao_inicial = "";
         $input_mes_emissao_terminal = "";
@@ -35,8 +35,8 @@ class CidadaoNacionalController extends Controller
         $input_ano_validade_inicial = "";
         $input_mes_validade_terminal = "";
         $input_ano_validade_terminal = "";
-        $input_mes_nascimento_inicial = "04";
-        $input_ano_nascimento_inicial = "1999";
+        $input_mes_nascimento_inicial = "";
+        $input_ano_nascimento_inicial = "";
         $input_mes_nascimento_terminal = "";
         $input_ano_nascimento_terminal = "";
 

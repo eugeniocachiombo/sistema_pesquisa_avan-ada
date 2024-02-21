@@ -22,7 +22,7 @@
     </form>
 
     @isset($resultado)
-        @include('ciadadao_nacional.tabela.tabela');
+        @include('ciadadao_nacional.tabela.tabela')
     @endisset
 </body>
 

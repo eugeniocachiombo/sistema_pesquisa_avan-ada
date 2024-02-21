@@ -15,10 +15,15 @@
 <input type="text" name="nome_mae" id="nome_mae"> <br>
 
 <label for="">Sexo</label> <br>
-<input type="text" name="sexo" id="sexo"> <br>
+<select name="sexo" id="sexo">
+    <option value="">Selecione...</option>
+    <option value="M">Masculino</option>
+    <option value="F">Femenino</option>
+</select> <br>
 
 <label for="">Estado civil</label> <br>
 <select name="estado_civil" id="estado_civil">
+    <option value="">Selecione...</option>
     <option value="solteiro">Solteiro</option>
     <option value="casado">Casado</option>
 </select> <br>

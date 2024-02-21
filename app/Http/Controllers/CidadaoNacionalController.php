@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\DB;
 
 class CidadaoNacionalController extends Controller
 {
+
+    public function pesquisarView()
+    {
+        return view('ciadadao_nacional.pesquisa.pesquisa');
+    }
+
     public function pesquisarDadosPessoais(Request $request)
     {
         $input_nome = $request->input("nome");

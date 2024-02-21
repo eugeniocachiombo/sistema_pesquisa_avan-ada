@@ -14,5 +14,9 @@
 <body>
 
     <header>
-        <h1>Cabeçalho</h1>
+        <div class="container" style="min-height: inherit">
+            <div class="col d-flex align-items-center" style="min-height: inherit">
+                <i class="fas fa-search" style="font-size: 30px"></i> <h3>Sistema de Pesquisa Avançada</h3> 
+            </div>
+        </div>
     </header>

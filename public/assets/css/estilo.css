@@ -29,6 +29,7 @@ footer{
     /*background-color: rgb(5, 83, 128);*/
     background-color: rgb(185, 209, 221);
     color: yellow;
+    cursor: pointer;
 }
 
 .select option{

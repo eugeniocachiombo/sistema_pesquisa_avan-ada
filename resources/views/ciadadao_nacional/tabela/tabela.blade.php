@@ -33,3 +33,7 @@
     </tr>
     @endforeach
 </table>
+
+<div class="py-4">
+    {{ $resultado->links() }}
+</div>

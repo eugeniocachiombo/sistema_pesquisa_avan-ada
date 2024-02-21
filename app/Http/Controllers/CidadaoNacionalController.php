@@ -144,11 +144,12 @@ class CidadaoNacionalController extends Controller
         }
 
         if (!empty($condicao)) {
-        $condicao_final = "where " . implode(" and ", $condicao);
+        $condicao_final = implode(" and ", $condicao);
         $condicao_final = str_replace("Array", "", $condicao_final);
 
-        $query = DB::select('
-                select * from cidadao_nacional ' . $condicao_final);
+        $query = DB::table('cidadao_nacional')
+                    ->whereRaw($condicao_final)
+                    ->paginate(5);
         $resultado = $query;
         return view('ciadadao_nacional.pesquisa.pesquisa', compact("resultado"));
             

@@ -1,0 +1,32 @@
+function pesquisarPorDataNascimento(Request $request) {
+        $mes_inicial_nascimento = ($request->input("mes_inicial_nascimento")) ? $request->input("mes_inicial_nascimento") : "";
+        $ano_inicial_nascimento = ($request->input("ano_inicial_nascimento")) ? $request->input("ano_inicial_nascimento") : "";
+        $mes_terminal_nascimento = ($request->input("mes_terminal_nascimento")) ? $request->input("mes_terminal_nascimento") : "";
+        $ano_terminal_nascimento = ($request->input("ano_terminal_nascimento")) ? $request->input("ano_terminal_nascimento") : "";
+        
+        $data_inicial_nascimento = $ano_inicial_nascimento . "-" . $mes_inicial_nascimento;
+        $data_terminal_nascimento = $ano_terminal_nascimento . "-" . $mes_terminal_nascimento;
+        $resultado = $this->validarPesquisanascimento($data_inicial_nascimento, $data_terminal_nascimento);
+        return view('ciadadao_nacional.pesquisa', compact("resultado"));
+    }
+
+    function validarPesquisaNascimento($data_inicial_nascimento, $data_terminal_nascimento){
+        if(!empty($data_inicial_nascimento) && !empty($data_terminal_nascimento) && $data_terminal_nascimento != "-"){
+            $data_inicial_tratada = $data_inicial_nascimento . "-01";
+            $data_terminal_tratado = $data_terminal_nascimento . "-31";
+            $query = DB::select('
+            select * from cidadao_nacional
+            where data_nascimento between ? and ?',
+            [$data_inicial_tratada, $data_terminal_tratado]);
+            return $query;
+        } else if(!empty($data_inicial_nascimento)) {
+            $data_inicial_tratada = explode("-", $data_inicial_nascimento);
+            $mes_nascimento = $data_inicial_tratada[1];
+            $ano_nascimento = $data_inicial_tratada[0];
+            $query = DB::select("
+            SELECT * FROM cidadao_nacional
+            where month(data_nascimento) = ? and year(data_nascimento) = ?",
+            [$mes_nascimento, $ano_nascimento]);
+            return $query;
+        }
+    }

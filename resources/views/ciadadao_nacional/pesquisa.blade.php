@@ -15,6 +15,7 @@
 
 @include('ciadadao_nacional.formularios.dataEmissao');
 @include('ciadadao_nacional.formularios.dataValidade');
+@include('ciadadao_nacional.formularios.dataNascimento');
 
 @isset($resultado)
     @include('ciadadao_nacional.tabela.tabela');

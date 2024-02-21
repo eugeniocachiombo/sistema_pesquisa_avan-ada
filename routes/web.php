@@ -8,5 +8,6 @@ Route::post('/ciadadao_nacional/registro', [CidadaoNacionalController::class, 'r
 Route::get('/ciadadao_nacional/pesquisa', [CidadaoNacionalController::class, 'pesquisarView']);
 Route::post('/ciadadao_nacional/pesquisa/emissao', [CidadaoNacionalController::class, 'pesquisarPorDataEmissao']);
 Route::post('/ciadadao_nacional/pesquisa/validade', [CidadaoNacionalController::class, 'pesquisarPorDataValidade']);
+Route::post('/ciadadao_nacional/pesquisa/nascimento', [CidadaoNacionalController::class, 'pesquisarPorDataNascimento']);
 
 

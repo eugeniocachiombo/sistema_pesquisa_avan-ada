@@ -1,0 +1,11 @@
+if (!empty($componentes['mes_validade_terminal']) && !empty($componentes['ano_validade_terminal']) && !empty($componentes['mes_validade_inicial']) && !empty($componentes['ano_validade_inicial'])) {
+
+            $validade_inicial_tratado = $componentes['ano_validade_inicial'] . "-" . $componentes['mes_validade_inicial'] . "-01";
+
+            $validade_terminal_tratado = $componentes['ano_validade_terminal']  . "-" . $componentes['mes_validade_terminal'] . "-31";
+
+            $condicao[] = "data_validade between '{$validade_inicial_tratado}' and '{$validade_terminal_tratado}' ";
+
+        } else if (!empty($componentes['mes_validade_inicial']) && !empty($componentes['ano_validade_inicial'])) {
+            $condicao[] = "month(data_validade) = '{$componentes['mes_validade_inicial']}' and year(data_validade) = '{$componentes['ano_validade_inicial']}'";
+        }

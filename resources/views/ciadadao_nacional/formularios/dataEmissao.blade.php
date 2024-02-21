@@ -1,8 +1,8 @@
 <h3>Pesquisar por data de emissão</h3>
 @csrf
 <p>Data Inicial</p>
-<label for="mes_inicial_emissao">Mês</label>
-<select name="mes_inicial_emissao" id="mes_inicial_emissao">
+<label for="mes_emissao_inicial">Mês</label>
+<select name="mes_emissao_inicial" id="mes_emissao_inicial">
     <option value="">Selecione...</option>
     <option value="01">Janeiro</option>
     <option value="02">Fevereiro</option>
@@ -18,8 +18,8 @@
     <option value="12">Dezembro</option>
 </select>
 
-<label for="ano_inicial_emissao">Ano</label>
-<select name="ano_inicial_emissao" id="ano_inicial_emissao">
+<label for="ano_emissao_inicial">Ano</label>
+<select name="ano_emissao_inicial" id="ano_emissao_inicial">
     <option value="">Selecione...</option>
     <option value="2021">2021</option>
     <option value="2022">2022</option>
@@ -28,8 +28,8 @@
 </select> <br> <br>
 
 <p>Data Terminal</p>
-<label for="mes_terminal_emissao">Mês</label>
-<select name="mes_terminal_emissao" id="mes_terminal_emissao">
+<label for="mes_emissao_terminal">Mês</label>
+<select name="mes_emissao_terminal" id="mes_emissao_terminal">
     <option value="">Selecione...</option>
     <option value="01">Janeiro</option>
     <option value="02">Fevereiro</option>
@@ -45,8 +45,8 @@
     <option value="12">Dezembro</option>
 </select>
 
-<label for="ano_terminal_emissao">Ano</label>
-<select name="ano_terminal_emissao" id="ano_terminal_emissao">
+<label for="ano_emissao_terminal">Ano</label>
+<select name="ano_emissao_terminal" id="ano_emissao_terminal">
     <option value="">Selecione...</option>
     <option value="2021">2021</option>
     <option value="2022">2022</option>

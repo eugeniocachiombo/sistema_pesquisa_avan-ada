@@ -16,7 +16,6 @@ class CidadaoNacionalController extends Controller
     }
 
     function pesquisarDadosPessoais(Request $request) {
-      
         $input_nome = $request->input("nome");
         $input_numero_bi = $request->input("numero_bi");
         $input_naturalidade = $request->input("naturalidade");
@@ -27,18 +26,18 @@ class CidadaoNacionalController extends Controller
         $input_altura = $request->input("altura");
         $input_residencia = $request->input("residencia");
         $input_provincia = $request->input("provincia");
-        $input_mes_emissao_inicial = "";
-        $input_ano_emissao_inicial = "";
-        $input_mes_emissao_terminal = "";
-        $input_ano_emissao_terminal = "";
-        $input_mes_validade_inicial = "";
-        $input_ano_validade_inicial = "";
-        $input_mes_validade_terminal = "";
-        $input_ano_validade_terminal = "";
-        $input_mes_nascimento_inicial = "";
-        $input_ano_nascimento_inicial = "";
-        $input_mes_nascimento_terminal = "";
-        $input_ano_nascimento_terminal = "";
+        $input_mes_emissao_inicial = $request->input("mes_emissao_inicial");
+        $input_ano_emissao_inicial = $request->input("ano_emissao_inicial");
+        $input_mes_emissao_terminal = $request->input("mes_emissao_terminal");
+        $input_ano_emissao_terminal = $request->input("ano_emissao_terminal");
+        $input_mes_validade_inicial = $request->input("mes_validade_inicial");
+        $input_ano_validade_inicial = $request->input("ano_validade_inicial");
+        $input_mes_validade_terminal = $request->input("mes_validade_terminal");
+        $input_ano_validade_terminal = $request->input("ano_validade_terminal");
+        $input_mes_nascimento_inicial = $request->input("mes_nascimento_inicial");
+        $input_ano_nascimento_inicial = $request->input("ano_nascimento_inicial");
+        $input_mes_nascimento_terminal = $request->input("mes_nascimento_terminal");
+        $input_ano_nascimento_terminal = $request->input("ano_nascimento_terminal");
 
         $nome = $input_nome ? $input_nome : "";
         $numero_bi = $input_numero_bi ? $input_numero_bi : "";
@@ -114,7 +113,7 @@ class CidadaoNacionalController extends Controller
             
             $emissao_terminal_tratado = $ano_emissao_terminal . "-" . $mes_emissao_terminal . "-31";
             
-            $condicao[] = "data_emissao between {$emissao_inicial_tratado} and {$emissao_terminal_tratado} ";
+            $condicao[] = "data_emissao between '{$emissao_inicial_tratado}' and '{$emissao_terminal_tratado}' ";
             
         } else if (!empty($mes_emissao_inicial) && !empty($ano_emissao_inicial)) {
             $condicao[] = "month(data_emissao) = '{$mes_emissao_inicial}' and year(data_emissao) = '{$ano_emissao_inicial}'";
@@ -126,7 +125,7 @@ class CidadaoNacionalController extends Controller
             
             $validade_terminal_tratado = $ano_validade_terminal . "-" . $mes_validade_terminal . "-31";
             
-            $condicao[] = "data_validade between {$validade_inicial_tratado} and {$validade_terminal_tratado} ";
+            $condicao[] = "data_validade between '{$validade_inicial_tratado}' and '{$validade_terminal_tratado}' ";
             
         } else if (!empty($mes_validade_inicial) && !empty($ano_validade_inicial)) {
             $condicao[] = "month(data_validade) = '{$mes_validade_inicial}' and year(data_validade) = '{$ano_validade_inicial}'";
@@ -138,7 +137,7 @@ class CidadaoNacionalController extends Controller
             
             $nascimento_terminal_tratado = $ano_nascimento_terminal . "-" . $mes_nascimento_terminal . "-31";
             
-            $condicao[] = "data_nascimento between {$nascimento_inicial_tratado} and {$nascimento_terminal_tratado} ";
+            $condicao[] = "data_nascimento between '{$nascimento_inicial_tratado}' and '{$nascimento_terminal_tratado}' ";
             
         } else if (!empty($mes_nascimento_inicial) && !empty($ano_nascimento_inicial)) {
             $condicao[] = "month(data_nascimento) = '{$mes_nascimento_inicial}' and year(data_nascimento) = '{$ano_nascimento_inicial}'";

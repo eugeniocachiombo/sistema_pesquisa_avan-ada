@@ -1,8 +1,8 @@
 <h3>Pesquisar por data de validade</h3>
 @csrf
 <p>Data Inicial</p>
-<label for="mes_inicial_validade">Mês</label>
-<select name="mes_inicial_validade" id="mes_inicial_validade">
+<label for="mes_validade_inicial">Mês</label>
+<select name="mes_validade_inicial" id="mes_validade_inicial">
     <option value="">Selecione...</option>
     <option value="01">Janeiro</option>
     <option value="02">Fevereiro</option>
@@ -18,8 +18,8 @@
     <option value="12">Dezembro</option>
 </select>
 
-<label for="ano_inicial_validade">Ano</label>
-<select name="ano_inicial_validade" id="ano_inicial_validade">
+<label for="ano_validade_inicial">Ano</label>
+<select name="ano_validade_inicial" id="ano_validade_inicial">
     <option value="">Selecione...</option>
     <option value="2021">2021</option>
     <option value="2022">2022</option>
@@ -34,8 +34,8 @@
 </select> <br> <br>
 
 <p>Data Terminal</p>
-<label for="mes_terminal_validade">Mês</label>
-<select name="mes_terminal_validade" id="mes_terminal_validade">
+<label for="mes_validade_terminal">Mês</label>
+<select name="mes_validade_terminal" id="mes_validade_terminal">
     <option value="">Selecione...</option>
     <option value="01">Janeiro</option>
     <option value="02">Fevereiro</option>
@@ -51,8 +51,8 @@
     <option value="12">Dezembro</option>
 </select>
 
-<label for="ano_terminal_validade">Ano</label>
-<select name="ano_terminal_validade" id="ano_terminal_validade">
+<label for="ano_validade_terminal">Ano</label>
+<select name="ano_validade_terminal" id="ano_validade_terminal">
     <option value="">Selecione...</option>
     <option value="2021">2021</option>
     <option value="2022">2022</option>

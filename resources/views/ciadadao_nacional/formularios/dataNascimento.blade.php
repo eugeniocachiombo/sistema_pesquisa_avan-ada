@@ -1,8 +1,8 @@
 <h3>Pesquisar por data de nascimento</h3>
 @csrf
 <p>Data Inicial</p>
-<label for="mes_inicial_nascimento">Mês</label>
-<select name="mes_inicial_nascimento" id="mes_inicial_nascimento">
+<label for="mes_nascimento_inicial">Mês</label>
+<select name="mes_nascimento_inicial" id="mes_nascimento_inicial">
     <option value="">Selecione...</option>
     <option value="01">Janeiro</option>
     <option value="02">Fevereiro</option>
@@ -18,8 +18,8 @@
     <option value="12">Dezembro</option>
 </select>
 
-<label for="ano_inicial_nascimento">Ano</label>
-<select name="ano_inicial_nascimento" id="ano_inicial_nascimento">
+<label for="ano_nascimento_inicial">Ano</label>
+<select name="ano_nascimento_inicial" id="ano_nascimento_inicial">
     <option value="">Selecione...</option>
     <option value="1950">1950</option>
     <option value="1951">1951</option>
@@ -85,8 +85,8 @@
 </select> <br> <br>
 
 <p>Data Terminal</p>
-<label for="mes_terminal_nascimento">Mês</label>
-<select name="mes_terminal_nascimento" id="mes_terminal_nascimento">
+<label for="mes_nascimento_terminal">Mês</label>
+<select name="mes_nascimento_terminal" id="mes_nascimento_terminal">
     <option value="">Selecione...</option>
     <option value="01">Janeiro</option>
     <option value="02">Fevereiro</option>
@@ -102,8 +102,8 @@
     <option value="12">Dezembro</option>
 </select>
 
-<label for="ano_terminal_nascimento">Ano</label>
-<select name="ano_terminal_nascimento" id="ano_terminal_nascimento">
+<label for="ano_nascimento_terminal">Ano</label>
+<select name="ano_nascimento_terminal" id="ano_nascimento_terminal">
     <option value="">Selecione...</option>
     <option value="">Selecione...</option>
     <option value="1950">1950</option>

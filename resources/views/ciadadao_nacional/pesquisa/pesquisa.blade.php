@@ -71,7 +71,9 @@
                 </div>
                 <br>
                 <div class="col-4">
-                    <input class="form-control" type="submit" value="Pesquisar">
+                    <button class="form-control button" type="submit" >
+                        <b>Pesquisar</b>
+                    </button>
                 </div>
             </div>
         </div>

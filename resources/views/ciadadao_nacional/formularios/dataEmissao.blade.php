@@ -1,4 +1,4 @@
-<form action="/ciadadao_nacional/pesquisa" method="post">
+<form action="/ciadadao_nacional/pesquisa/emissao" method="post">
     <h3>Pesquisar por data de emissão</h3>
     @csrf
     <p>Data Inicial</p>

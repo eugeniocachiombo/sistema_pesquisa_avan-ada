@@ -1,4 +1,4 @@
-<form action="/ciadadao_nacional/pesquisa" method="post">
+<form action="/ciadadao_nacional/pesquisa/validade" method="post">
     <h3>Pesquisar por data de validade</h3>
     @csrf
     <p>Data Inicial</p>
@@ -26,6 +26,12 @@
         <option value="2022">2022</option>
         <option value="2023">2023</option>
         <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
+        <option value="2029">2029</option>
+        <option value="2030">2030</option>
     </select> <br> <br>
 
     <p>Data Terminal</p>
@@ -53,8 +59,14 @@
         <option value="2022">2022</option>
         <option value="2023">2023</option>
         <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
+        <option value="2029">2029</option>
+        <option value="2030">2030</option>
     </select> <br> <br>
-
     
     <input type="submit" value="Pesquisar" name="btnPesquisar" id="btnPesquisar">
 </form>
+

@@ -55,4 +55,37 @@ class CidadaoNacionalController extends Controller
             return $query;
         }
     }
+
+    function pesquisarPorDataValidade(Request $request) {
+        $mes_inicial_validade = ($request->input("mes_inicial_validade")) ? $request->input("mes_inicial_validade") : "";
+        $ano_inicial_validade = ($request->input("ano_inicial_validade")) ? $request->input("ano_inicial_validade") : "";
+        $mes_terminal_validade = ($request->input("mes_terminal_validade")) ? $request->input("mes_terminal_validade") : "";
+        $ano_terminal_validade = ($request->input("ano_terminal_validade")) ? $request->input("ano_terminal_validade") : "";
+        
+        $data_inicial_validade = $ano_inicial_validade . "-" . $mes_inicial_validade;
+        $data_terminal_validade = $ano_terminal_validade . "-" . $mes_terminal_validade;
+        $resultado = $this->validarPesquisavalidade($data_inicial_validade, $data_terminal_validade);
+        return view('ciadadao_nacional.pesquisa', compact("resultado"));
+    }
+
+    function validarPesquisaValidade($data_inicial_validade, $data_terminal_validade){
+        if(!empty($data_inicial_validade) && !empty($data_terminal_validade) && $data_terminal_validade != "-"){
+            $data_inicial_tratada = $data_inicial_validade . "-01";
+            $data_terminal_tratado = $data_terminal_validade . "-31";
+            $query = DB::select('
+            select * from cidadao_nacional
+            where data_validade between ? and ?',
+            [$data_inicial_tratada, $data_terminal_tratado]);
+            return $query;
+        } else if(!empty($data_inicial_validade)) {
+            $data_inicial_tratada = explode("-", $data_inicial_validade);
+            $mes_validade = $data_inicial_tratada[1];
+            $ano_validade = $data_inicial_tratada[0];
+            $query = DB::select("
+            SELECT * FROM cidadao_nacional
+            where month(data_validade) = ? and year(data_validade) = ?",
+            [$mes_validade, $ano_validade]);
+            return $query;
+        }
+    }
 }

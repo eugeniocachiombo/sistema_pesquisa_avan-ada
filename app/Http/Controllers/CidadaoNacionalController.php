@@ -12,7 +12,7 @@ class CidadaoNacionalController extends Controller
     }
 
     function pesquisarView() {
-        return view('ciadadao_nacional.pesquisa');
+        return view('ciadadao_nacional.pesquisa.pesquisa');
     }
 
     function pesquisarDadosPessoais(Request $request) {
@@ -146,12 +146,11 @@ class CidadaoNacionalController extends Controller
         if (!empty($condicao)) {
         $condicao_final = "where " . implode(" and ", $condicao);
         $condicao_final = str_replace("Array", "", $condicao_final);
-        echo $condicao_final;
 
         $query = DB::select('
                 select * from cidadao_nacional ' . $condicao_final);
         $resultado = $query;
-        return view('ciadadao_nacional.pesquisa', compact("resultado"));
+        return view('ciadadao_nacional.pesquisa.pesquisa', compact("resultado"));
             
         }else{
             echo "Nenhuma opção selecionada";

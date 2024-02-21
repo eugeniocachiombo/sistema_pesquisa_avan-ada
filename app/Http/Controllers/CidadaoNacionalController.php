@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class CidadaoNacionalController extends Controller
 {
-    function registroView() {
+    function registrarView() {
         return view('ciadadao_nacional.registro');
     }
 
-    function pesquisaView() {
+    function pesquisarView() {
         return view('ciadadao_nacional.pesquisa');
     }
 
@@ -23,32 +23,36 @@ class CidadaoNacionalController extends Controller
         return view('ciadadao_nacional.registro', compact("cidadao"));*/
     }
 
-    function pesquisarDados(Request $request) {
-        $mes_inicial = ($request->input("mes_inicial")) ? $request->input("mes_inicial") : "";
-        $ano_inicial = ($request->input("ano_inicial")) ? $request->input("ano_inicial") : "";
-        $mes_terminal = ($request->input("mes_terminal")) ? $request->input("mes_terminal") : "";
-        $ano_terminal = ($request->input("ano_terminal")) ? $request->input("ano_terminal") : "";
+    function pesquisarPorDataEmissao(Request $request) {
+        $mes_inicial_emissao = ($request->input("mes_inicial_emissao")) ? $request->input("mes_inicial_emissao") : "";
+        $ano_inicial_emissao = ($request->input("ano_inicial_emissao")) ? $request->input("ano_inicial_emissao") : "";
+        $mes_terminal_emissao = ($request->input("mes_terminal_emissao")) ? $request->input("mes_terminal_emissao") : "";
+        $ano_terminal_emissao = ($request->input("ano_terminal_emissao")) ? $request->input("ano_terminal_emissao") : "";
         
-        $data_inicial = $ano_inicial . "-" . $mes_inicial ;
-        $data_terminal = $ano_terminal . "-" . $mes_terminal ;
-         
-        if(!empty($data_inicial) && !empty($data_terminal)){
-            $data_inicial_tratado = $data_inicial . "-01";
-            $data_terminal_tratado = $data_terminal . "-31";
+        $data_inicial_emissao = $ano_inicial_emissao . "-" . $mes_inicial_emissao;
+        $data_terminal_emissao = $ano_terminal_emissao . "-" . $mes_terminal_emissao;
+        $resultado = $this->validarPesquisaEmissao($data_inicial_emissao, $data_terminal_emissao);
+        return view('ciadadao_nacional.pesquisa', compact("resultado"));
+    }
+
+    function validarPesquisaEmissao($data_inicial_emissao, $data_terminal_emissao){
+        if(!empty($data_inicial_emissao) && !empty($data_terminal_emissao) && $data_terminal_emissao != "-"){
+            $data_inicial_tratada = $data_inicial_emissao . "-01";
+            $data_terminal_tratado = $data_terminal_emissao . "-31";
             $query = DB::select('
             select * from cidadao_nacional
             where data_emissao between ? and ?',
-            [$data_inicial_tratado, $data_terminal_tratado]);
-            $resultado = $query;
-            return view('ciadadao_nacional.pesquisa', compact("resultado"));
-        } else if(!empty($data_inicial) ) {
-            $data_inicial_tratado = $data_inicial . "-01";
-            $query = DB::select('
-            select * from cidadao_nacional
-            where data_emissao = ?',
-            [$data_inicial_tratado]);
-            $resultado = $query;
-            return view('ciadadao_nacional.pesquisa', compact("resultado"));
+            [$data_inicial_tratada, $data_terminal_tratado]);
+            return $query;
+        } else if(!empty($data_inicial_emissao)) {
+            $data_inicial_tratada = explode("-", $data_inicial_emissao);
+            $mes_emissao = $data_inicial_tratada[1];
+            $ano_emissao = $data_inicial_tratada[0];
+            $query = DB::select("
+            SELECT * FROM cidadao_nacional
+            where month(data_emissao) = ? and year(data_emissao) = ?",
+            [$mes_emissao, $ano_emissao]);
+            return $query;
         }
     }
 }

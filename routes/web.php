@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CidadaoNacionalController;
 
-Route::get('/ciadadao_nacional/registro', [CidadaoNacionalController::class, 'registroView']);
-Route::get('/ciadadao_nacional/pesquisa', [CidadaoNacionalController::class, 'pesquisaView']);
+Route::get('/ciadadao_nacional/registro', [CidadaoNacionalController::class, 'registrarView']);
 Route::post('/ciadadao_nacional/registro', [CidadaoNacionalController::class, 'registrarDados']);
-Route::post('/ciadadao_nacional/pesquisa', [CidadaoNacionalController::class, 'pesquisarDados']);
+Route::get('/ciadadao_nacional/pesquisa', [CidadaoNacionalController::class, 'pesquisarView']);
+Route::post('/ciadadao_nacional/pesquisa', [CidadaoNacionalController::class, 'pesquisarPorDataEmissao']);
 
 

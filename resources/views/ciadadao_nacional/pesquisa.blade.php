@@ -13,61 +13,9 @@
 <body>
     
 
-<form action="/ciadadao_nacional/pesquisa" method="post">
-    @csrf
-    <p>Data Inicial</p>
-    <label for="mes_inicial">Mês</label> 
-    <select name="mes_inicial" id="mes_inicial">
-        <option value="01">Janeiro</option>
-        <option value="02">Fevereiro</option>
-        <option value="03">Março</option>
-        <option value="04">Abril</option>
-        <option value="05">Maio</option>
-        <option value="06">Junho</option>
-        <option value="07">Julho</option>
-        <option value="08">Agosto</option>
-        <option value="09">Setembro</option>
-        <option value="10">Outubro</option>
-        <option value="11">Novembro</option>
-        <option value="12">Dezembro</option>
-    </select>
+@include('ciadadao_nacional.formularios.dataEmissao');
 
-    <label for="ano_inicial">Ano</label>
-    <select name="ano_inicial" id="ano_inicial">
-        <option value="2021">2021</option>
-        <option value="2022">2022</option>
-        <option value="2023">2023</option>
-        <option value="2024">2024</option>
-    </select> <br> <br>
 
-    <p>Data Terminal</p>
-    <label for="mes_terminal">Mês</label> 
-    <select name="mes_terminal" id="mes_terminal">
-        <option value="01">Janeiro</option>
-        <option value="02">Fevereiro</option>
-        <option value="03">Março</option>
-        <option value="04">Abril</option>
-        <option value="05">Maio</option>
-        <option value="06">Junho</option>
-        <option value="07">Julho</option>
-        <option value="08">Agosto</option>
-        <option value="09">Setembro</option>
-        <option value="10">Outubro</option>
-        <option value="11">Novembro</option>
-        <option value="12">Dezembro</option>
-    </select>
-
-    <label for="ano_terminal">Ano</label>
-    <select name="ano_terminal" id="ano_terminal">
-        <option value="2021">2021</option>
-        <option value="2022">2022</option>
-        <option value="2023">2023</option>
-        <option value="2024">2024</option>
-    </select> <br> <br>
-
-    
-    <input type="submit" value="Pesquisar" name="btnPesquisar" id="btnPesquisar">
-</form>
 
 @isset($resultado)
     <table>
@@ -106,8 +54,6 @@
         @endforeach
     </table>
 @endisset
-
-
 
 </body>
 </html>

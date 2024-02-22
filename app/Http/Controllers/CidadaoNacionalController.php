@@ -177,8 +177,7 @@ class CidadaoNacionalController extends Controller
             $condicao_final = str_replace("Array", "", $condicao_final);
             $query = DB::table('cidadao_nacional')
                 ->whereRaw($condicao_final)
-                ->orderBy('nome', 'ASC')
-                ->paginate(5);
+                ->orderBy('nome', 'ASC')->get();
             return $query;
         }
     }

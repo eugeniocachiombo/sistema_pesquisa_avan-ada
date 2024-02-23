@@ -1,0 +1,8 @@
+if (!empty($componentes['mes_validade_terminal']) && !empty($componentes['ano_validade_terminal']) && !empty($componentes['mes_validade_inicial']) && !empty($componentes['ano_validade_inicial'])) {
+            $validade_inicial_tratado = $componentes['ano_validade_inicial'] . "-" . $componentes['mes_validade_inicial'] . "-01";
+            $validade_terminal_tratado = $componentes['ano_validade_terminal'] . "-" . $componentes['mes_validade_terminal'] . "-31";
+            $condicao->whereBetween("data_validade", [$validade_inicial_tratado, $validade_terminal_tratado]);
+        } else if (!empty($componentes['mes_validade_inicial']) && !empty($componentes['ano_validade_inicial'])) {
+            $condicao->whereMonth("data_validade", $componentes['mes_validade_inicial']);
+            $condicao->whereYear("data_validade", $componentes['ano_validade_inicial']);
+        }

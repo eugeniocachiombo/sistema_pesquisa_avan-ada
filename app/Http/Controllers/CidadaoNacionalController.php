@@ -96,6 +96,7 @@ class CidadaoNacionalController extends Controller
         $nova_condicao = $this->verficarComponentesComValores($componentes, $condicao);
         $resultado = $nova_condicao->paginate(5);
         return view('ciadadao_nacional.pesquisa.pesquisa', compact("resultado"));
+        //return response()->json($resultado);
     }
 
     public function verficarComponentesComValores($componentes, $condicao)
@@ -158,15 +159,16 @@ class CidadaoNacionalController extends Controller
             $condicao->whereYear("data_emissao", $componentes['ano_emissao_inicial']);
         }
 
-        if (!empty($componentes['mes_validade_terminal']) && !empty($componentes['ano_emissao_terminal']) && !empty($componentes['mes_emissao_inicial']) && !empty($componentes['ano_emissao_inicial'])) {
-            $emissao_inicial_tratado = $componentes['ano_emissao_inicial'] . "-" . $componentes['mes_emissao_inicial'] . "-01";
-            $emissao_terminal_tratado = $componentes['ano_emissao_terminal'] . "-" . $componentes['mes_emissao_terminal'] . "-31";
-            $condicao->whereBetween("data_emissao", [$emissao_inicial_tratado, $emissao_terminal_tratado]);
-        } else if (!empty($componentes['mes_emissao_inicial']) && !empty($componentes['ano_emissao_inicial'])) {
-            $condicao->whereMonth("data_emissao", $componentes['mes_emissao_inicial']);
-            $condicao->whereYear("data_emissao", $componentes['ano_emissao_inicial']);
+        if (!empty($componentes['mes_validade_terminal']) && !empty($componentes['ano_validade_terminal']) && !empty($componentes['mes_validade_inicial']) && !empty($componentes['ano_validade_inicial'])) {
+            $validade_inicial_tratado = $componentes['ano_validade_inicial'] . "-" . $componentes['mes_validade_inicial'] . "-01";
+            $validade_terminal_tratado = $componentes['ano_validade_terminal'] . "-" . $componentes['mes_validade_terminal'] . "-31";
+            $condicao->whereBetween("data_validade", [$validade_inicial_tratado, $validade_terminal_tratado]);
+        } else if (!empty($componentes['mes_validade_inicial']) && !empty($componentes['ano_validade_inicial'])) {
+            $condicao->whereMonth("data_validade", $componentes['mes_validade_inicial']);
+            $condicao->whereYear("data_validade", $componentes['ano_validade_inicial']);
         }
 
         return $condicao;
+        
     }
 }

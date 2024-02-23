@@ -1,16 +1,22 @@
 <title>Página de Pesquisa</title>
 @include('ciadadao_nacional.inclusao.cabecalho')
 
-@if(session("notificacao"))
-    {{ session("notificacao") }}
+@if (session('notificacao'))
+    <script>
+        Swal.fire({
+            icon: "error",
+            title: "Erro!",
+            text: "Por favor, fornece as informações para prosseguir com a pesquisa",
+        });
+    </script>
 @endif
 
 <main class="">
-    <form class="" style="min-height: inherit" action="/cidadao_nacional/pesquisa/dados_pessoais"
-        method="get">
+    <form class="" style="min-height: inherit" action="/cidadao_nacional/pesquisa/dados_pessoais" method="get">
         <div class="container  d-flex align-items-center" style="min-height: inherit">
             <div class="col">
-                <h3>Formulário de pesquisa</h3> <hr>
+                <h3>Formulário de pesquisa</h3>
+                <hr>
                 <div class="accordion accordion-flush " id="accordionFlushExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
@@ -75,7 +81,7 @@
                 </div>
                 <br>
                 <div class="col-4">
-                    <button class="form-control button" type="submit" >
+                    <button class="form-control button" type="submit">
                         <b>Pesquisar</b>
                     </button>
                 </div>

@@ -152,17 +152,19 @@ class CidadaoNacionalController extends Controller
         if (!empty($componentes['mes_emissao_terminal']) && !empty($componentes['ano_emissao_terminal']) && !empty($componentes['mes_emissao_inicial']) && !empty($componentes['ano_emissao_inicial'])) {
             $emissao_inicial_tratado = $componentes['ano_emissao_inicial'] . "-" . $componentes['mes_emissao_inicial'] . "-01";
             $emissao_terminal_tratado = $componentes['ano_emissao_terminal'] . "-" . $componentes['mes_emissao_terminal'] . "-31";
-            $condicao[] = "data_emissao between '{$emissao_inicial_tratado}' and '{$emissao_terminal_tratado}' ";
+            $condicao->whereBetween("data_emissao", [$emissao_inicial_tratado, $emissao_terminal_tratado]);
         } else if (!empty($componentes['mes_emissao_inicial']) && !empty($componentes['ano_emissao_inicial'])) {
-            $condicao[] = "month(data_emissao) = '{$componentes['mes_emissao_inicial']}' and year(data_emissao) = '{$componentes['ano_emissao_inicial']}'";
+            $condicao->whereMonth("data_emissao", $componentes['mes_emissao_inicial']);
+            $condicao->whereYear("data_emissao", $componentes['ano_emissao_inicial']);
         }
 
-        if (!empty($componentes['mes_validade_terminal']) && !empty($componentes['ano_validade_terminal']) && !empty($componentes['mes_validade_inicial']) && !empty($componentes['ano_validade_inicial'])) {
-            $validade_inicial_tratado = $componentes['ano_validade_inicial'] . "-" . $componentes['mes_validade_inicial'] . "-01";
-            $validade_terminal_tratado = $componentes['ano_validade_terminal'] . "-" . $componentes['mes_validade_terminal'] . "-31";
-            $condicao[] = "data_validade between '{$validade_inicial_tratado}' and '{$validade_terminal_tratado}' ";
-        } else if (!empty($componentes['mes_validade_inicial']) && !empty($componentes['ano_validade_inicial'])) {
-            $condicao[] = "month(data_validade) = '{$componentes['mes_validade_inicial']}' and year(data_validade) = '{$componentes['ano_validade_inicial']}'";
+        if (!empty($componentes['mes_validade_terminal']) && !empty($componentes['ano_emissao_terminal']) && !empty($componentes['mes_emissao_inicial']) && !empty($componentes['ano_emissao_inicial'])) {
+            $emissao_inicial_tratado = $componentes['ano_emissao_inicial'] . "-" . $componentes['mes_emissao_inicial'] . "-01";
+            $emissao_terminal_tratado = $componentes['ano_emissao_terminal'] . "-" . $componentes['mes_emissao_terminal'] . "-31";
+            $condicao->whereBetween("data_emissao", [$emissao_inicial_tratado, $emissao_terminal_tratado]);
+        } else if (!empty($componentes['mes_emissao_inicial']) && !empty($componentes['ano_emissao_inicial'])) {
+            $condicao->whereMonth("data_emissao", $componentes['mes_emissao_inicial']);
+            $condicao->whereYear("data_emissao", $componentes['ano_emissao_inicial']);
         }
 
         return $condicao;

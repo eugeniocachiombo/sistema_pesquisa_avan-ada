@@ -96,7 +96,6 @@ class CidadaoNacionalController extends Controller
         $nova_condicao = $this->verficarComponentesComValores($componentes, $condicao);
         $resultado = $nova_condicao->paginate(5);
         return view('ciadadao_nacional.pesquisa.pesquisa', compact("resultado"));
-        //return response()->json($resultado);
     }
 
     public function verficarComponentesComValores($componentes, $condicao)
@@ -169,6 +168,5 @@ class CidadaoNacionalController extends Controller
         }
 
         return $condicao;
-        
     }
 }

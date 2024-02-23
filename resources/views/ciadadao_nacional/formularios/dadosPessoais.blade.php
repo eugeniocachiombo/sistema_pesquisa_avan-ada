@@ -9,14 +9,11 @@
         <div class="col-6">
             <label for="numero_bi">Número do BI</label> <br>
             <input class="form-control" type="text" name="numero_bi" id="numero_bi">
-
         </div>
-
 
         <dvi class="col-6">
             <label for="naturalidade">Naturalidade</label> <br>
             <input class="form-control" type="text" name="naturalidade" id="naturalidade">
-
         </dvi>
 
         <div class="col-6">
@@ -38,26 +35,25 @@
                     <option value="M">Masculino</option>
                     <option value="F">Femenino</option>
                 </select> <i class="fas fa-chevron-circle-down"
-                style="color: white; position: relative; left: -32px;"></i>
+                    style="color: white; position: relative; left: -32px;"></i>
             </div>
         </div>
 
         <div class="col-6">
             <label for="">Estado civil</label> <br>
             <div class="col-12 d-flex align-items-center" style="min-width: inherit">
-            <select class="form-control select" name="estado_civil" id="estado_civil">
-                <option value="">Selecione...</option>
-                <option value="solteiro(a)">Solteiro(a)</option>
-                <option value="casado(a)">Casado(a)</option>
-            </select> <i class="fas fa-chevron-circle-down"
-            style="color: white; position: relative; left: -32px;"></i>
-        </div>
+                <select class="form-control select" name="estado_civil" id="estado_civil">
+                    <option value="">Selecione...</option>
+                    <option value="solteiro(a)">Solteiro(a)</option>
+                    <option value="casado(a)">Casado(a)</option>
+                </select> <i class="fas fa-chevron-circle-down"
+                    style="color: white; position: relative; left: -32px;"></i>
+            </div>
         </div>
 
         <div class="col-6">
             <label for="">Altura</label> <br>
             <input class="form-control" type="text" name="altura" id="altura">
-
         </div>
 
         <div class="col-6">
@@ -69,6 +65,5 @@
             <label for="">Província</label> <br>
             <input class="form-control" type="text" name="provincia" id="provincia">
         </div>
-
     </div>
 </div>

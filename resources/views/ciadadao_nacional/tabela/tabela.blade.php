@@ -28,9 +28,9 @@
                             {{ $item->numero_bi }}</td>
                         <td class="border text-center" style="min-width: 200px; white-space: nowrap">
                             <?php
-                                $data = explode('-', $item->data_nascimento);
-                                $data_tratada = $data[2] . '-' . $data[1] . '-' . $data[0];
-                                echo $data_tratada;
+                            $data = explode('-', $item->data_nascimento);
+                            $data_tratada = $data[2] . '-' . $data[1] . '-' . $data[0];
+                            echo $data_tratada;
                             ?>
                         </td>
                         <td class="border text-center" style="min-width: 200px; white-space: nowrap">
@@ -41,16 +41,16 @@
                             {{ $item->nome_mae }}</td>
                         <td class="border text-center" style="min-width: 200px; white-space: nowrap">
                             <?php
-                                $data = explode('-', $item->data_emissao);
-                                $data_tratada = $data[2] . '-' . $data[1] . '-' . $data[0];
-                                echo $data_tratada;
+                            $data = explode('-', $item->data_emissao);
+                            $data_tratada = $data[2] . '-' . $data[1] . '-' . $data[0];
+                            echo $data_tratada;
                             ?>
                         </td>
                         <td class="border text-center" style="min-width: 200px; white-space: nowrap">
                             <?php
-                                $data = explode('-', $item->data_validade);
-                                $data_tratada = $data[2] . '-' . $data[1] . '-' . $data[0];
-                                echo $data_tratada;
+                            $data = explode('-', $item->data_validade);
+                            $data_tratada = $data[2] . '-' . $data[1] . '-' . $data[0];
+                            echo $data_tratada;
                             ?>
                         </td>
                         <td class="border text-center" style="min-width: 200px; white-space: nowrap">
@@ -72,6 +72,8 @@
                 @endforeach
             </tbody>
         </table>
+
+        {{ $resultado->links() }}
 
     </div>
 </div>

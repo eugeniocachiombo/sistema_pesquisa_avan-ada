@@ -78,10 +78,10 @@
             </div>
         </div>
     </form>
-
     @isset($resultado)
         @include('ciadadao_nacional.tabela.tabela')
     @endisset
+ 
 </main>
 
 @include('ciadadao_nacional.inclusao.rodape')

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CidadaoNacional;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -67,7 +68,7 @@ class CidadaoNacionalController extends Controller
         $mes_nascimento_terminal = $input_mes_nascimento_terminal ? $input_mes_nascimento_terminal : "";
         $ano_nascimento_terminal = $input_ano_nascimento_terminal ? $input_ano_nascimento_terminal : "";
 
-        $condicao = [];
+        $condicao = CidadaoNacional::query();
         $componentes = [
             "nome" => $nome,
             "numero_bi" => $numero_bi,
@@ -93,62 +94,59 @@ class CidadaoNacionalController extends Controller
             "ano_nascimento_terminal" => $ano_nascimento_terminal,
         ];
         $nova_condicao = $this->verficarComponentesComValores($componentes, $condicao);
-        $resultado = $this->verficarCondicaoParaCadastrar($nova_condicao);
-        if ($resultado) {
-            return view('ciadadao_nacional.pesquisa.pesquisa', compact("resultado"));
-        } else {
-            return view('ciadadao_nacional.pesquisa.pesquisa');
-        }
+        $resultado = $nova_condicao->paginate(3);
+        return view('ciadadao_nacional.pesquisa.pesquisa', compact("resultado"));
     }
 
     public function verficarComponentesComValores($componentes, $condicao)
     {
         if (!empty($componentes['nome'])) {
-            $condicao[] = "nome = '{$componentes['nome']}'";
+            $condicao->where("nome", $componentes['nome']);
         }
 
         if (!empty($componentes['numero_bi'])) {
-            $condicao[] = "numero_bi = '{$componentes['numero_bi']}'";
+            $condicao->where("numero_bi", $componentes['numero_bi']);
         }
 
         if (!empty($componentes['naturalidade'])) {
-            $condicao[] = "naturalidade = '{$componentes['naturalidade']}'";
+            $condicao->where("naturalidade", $componentes['naturalidade']);
         }
 
         if (!empty($componentes['nome_pai'])) {
-            $condicao[] = "nome_pai = '{$componentes['nome_pai']}'";
+            $condicao->where("nome_pai", $componentes['nome_pai']);
         }
 
         if (!empty($componentes['nome_mae'])) {
-            $condicao[] = "nome_mae = '{$componentes['nome_mae']}'";
+            $condicao->where("nome_mae", $componentes['nome_mae']);
         }
 
         if (!empty($componentes['sexo'])) {
-            $condicao[] = "sexo = '{$componentes['sexo']}'";
+            $condicao->where("sexo", $componentes['sexo']);
         }
 
         if (!empty($componentes['estado_civil'])) {
-            $condicao[] = "estado_civil = '{$componentes['estado_civil']}'";
+            $condicao->where("estado_civil", $componentes['estado_civil']);
         }
 
         if (!empty($componentes['altura'])) {
-            $condicao[] = "altura = '{$componentes['altura']}'";
+            $condicao->where("altura", $componentes['altura']);
         }
 
         if (!empty($componentes['residencia'])) {
-            $condicao[] = "residencia = '{$componentes['residencia']}'";
+            $condicao->where("residencia", $componentes['residencia']);
         }
 
         if (!empty($componentes['provincia'])) {
-            $condicao[] = "provincia = '{$componentes['provincia']}'";
+            $condicao->where("provincia", $componentes['provincia']);
         }
 
         if (!empty($componentes['mes_nascimento_terminal']) && !empty($componentes['ano_nascimento_terminal']) && !empty($componentes['mes_nascimento_inicial']) && !empty($componentes['ano_nascimento_inicial'])) {
             $nascimento_inicial_tratado = $componentes['ano_nascimento_inicial'] . "-" . $componentes['mes_nascimento_inicial'] . "-01";
             $nascimento_terminal_tratado = $componentes['ano_nascimento_terminal'] . "-" . $componentes['mes_nascimento_terminal'] . "-31";
-            $condicao[] = "data_nascimento between '{$nascimento_inicial_tratado}' and '{$nascimento_terminal_tratado}' ";
+            $condicao->whereBetween("data_nascimento", [$nascimento_inicial_tratado, $nascimento_terminal_tratado]);
         } else if (!empty($componentes['mes_nascimento_inicial']) && !empty($componentes['ano_nascimento_inicial'])) {
-            $condicao[] = "month(data_nascimento) = '{$componentes['mes_nascimento_inicial']}' and year(data_nascimento) = '{$componentes['ano_nascimento_inicial']}'";
+            $condicao->whereMonth("data_nascimento", $componentes['mes_nascimento_inicial']);
+            $condicao->whereYear("data_nascimento", $componentes['ano_nascimento_inicial']);
         }
 
         if (!empty($componentes['mes_emissao_terminal']) && !empty($componentes['ano_emissao_terminal']) && !empty($componentes['mes_emissao_inicial']) && !empty($componentes['ano_emissao_inicial'])) {
@@ -169,17 +167,4 @@ class CidadaoNacionalController extends Controller
 
         return $condicao;
     }
-
-    public function verficarCondicaoParaCadastrar($condicao)
-    {
-        if (!empty($condicao)) {
-            $condicao_final = implode(" and ", $condicao);
-            $condicao_final = str_replace("Array", "", $condicao_final);
-            $query = DB::table('cidadao_nacional')
-                ->whereRaw($condicao_final)
-                ->orderBy('nome', 'ASC')->get();
-            return $query;
-        }
-    }
-
 }

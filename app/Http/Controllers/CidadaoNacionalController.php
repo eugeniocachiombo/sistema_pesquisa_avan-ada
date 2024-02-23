@@ -94,7 +94,7 @@ class CidadaoNacionalController extends Controller
             "ano_nascimento_terminal" => $ano_nascimento_terminal,
         ];
         $nova_condicao = $this->verficarComponentesComValores($componentes, $condicao);
-        $resultado = $nova_condicao->paginate(3);
+        $resultado = $nova_condicao->paginate(5);
         return view('ciadadao_nacional.pesquisa.pesquisa', compact("resultado"));
     }
 

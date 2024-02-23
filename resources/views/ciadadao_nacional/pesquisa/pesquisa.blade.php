@@ -3,7 +3,7 @@
 
 <main class="">
     <form class="" style="min-height: inherit" action="/cidadao_nacional/pesquisa/dados_pessoais"
-        method="post">
+        method="get">
         <div class="container  d-flex align-items-center" style="min-height: inherit">
             <div class="col">
                 <h3>Formulário de pesquisa</h3> <hr>

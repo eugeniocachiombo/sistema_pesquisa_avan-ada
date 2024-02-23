@@ -1,6 +1,10 @@
 <title>Página de Pesquisa</title>
 @include('ciadadao_nacional.inclusao.cabecalho')
 
+@if(session("notificacao"))
+    {{ session("notificacao") }}
+@endif
+
 <main class="">
     <form class="" style="min-height: inherit" action="/cidadao_nacional/pesquisa/dados_pessoais"
         method="get">

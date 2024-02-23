@@ -93,9 +93,15 @@ class CidadaoNacionalController extends Controller
             "mes_nascimento_terminal" => $mes_nascimento_terminal,
             "ano_nascimento_terminal" => $ano_nascimento_terminal,
         ];
-        $nova_condicao = $this->verficarComponentesComValores($componentes, $condicao);
-        $resultado = $nova_condicao->paginate(5);
-        return view('ciadadao_nacional.pesquisa.pesquisa', compact("resultado"));
+
+        $componentes = array_filter($componentes);
+        if(empty($componentes)){
+            return redirect('/')->with("notificacao", "Por favor, fornece as informações para prosseguir com a pesquisa");
+        }else{
+            $nova_condicao = $this->verficarComponentesComValores($componentes, $condicao);
+            $resultado = $nova_condicao->paginate(5);
+            return view('ciadadao_nacional.pesquisa.pesquisa', compact("resultado"));
+        }
     }
 
     public function verficarComponentesComValores($componentes, $condicao)

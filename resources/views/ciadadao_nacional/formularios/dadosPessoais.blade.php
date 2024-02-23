@@ -56,7 +56,7 @@
 
         <div class="col-6">
             <label for="">Altura</label> <br>
-            <input class="form-control" type="number" name="altura" id="altura">
+            <input class="form-control" type="text" name="altura" id="altura">
 
         </div>
 

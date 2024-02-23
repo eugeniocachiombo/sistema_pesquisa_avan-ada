@@ -47,8 +47,8 @@
             <div class="col-12 d-flex align-items-center" style="min-width: inherit">
             <select class="form-control select" name="estado_civil" id="estado_civil">
                 <option value="">Selecione...</option>
-                <option value="solteiro">Solteiro</option>
-                <option value="casado">Casado</option>
+                <option value="solteiro(a)">Solteiro(a)</option>
+                <option value="casado(a)">Casado(a)</option>
             </select> <i class="fas fa-chevron-circle-down"
             style="color: white; position: relative; left: -32px;"></i>
         </div>

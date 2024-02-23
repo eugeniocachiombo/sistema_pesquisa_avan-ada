@@ -1,10 +1,8 @@
-
-
 <div class="container pt-2">
     <div class="col-12" style="overflow: auto;">
-        <table class="table table-sm table-hover" >
+        <table class="table table-sm table-hover">
             <thead class="table-dark ">
-                <tr class="" >
+                <tr class="">
                     <th class="border text-center" style="min-width: 200px; white-space: nowrap">Nome</th>
                     <th class="border text-center" style="min-width: 200px; white-space: nowrap">Nº do BI</th>
                     <th class="border text-center" style="min-width: 200px; white-space: nowrap">Data de Nascimento</th>
@@ -20,29 +18,60 @@
                     <th class="border text-center" style="min-width: 200px; white-space: nowrap">Província</th>
                 </tr>
             </thead>
-    
+
             <tbody style="background: crimson; color: yellow">
                 @foreach ($resultado as $item)
                     <tr>
-                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->nome }}</td>
-                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->numero_bi }}</td>
-                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->data_nascimento }}</td>
-                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->naturalidade }}</td>
-                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->nome_pai }}</td>
-                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->nome_mae }}</td>
-                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->data_emissao }}</td>
-                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->data_validade }}</td>
-                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->sexo }}</td>
-                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->estado_civil }}</td>
-                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->altura }}</td>
-                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->residencia }}</td>
-                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->provincia }}</td>
+                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->nome }}
+                        </td>
+                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">
+                            {{ $item->numero_bi }}</td>
+                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">
+                            <?php
+                                $data = explode('-', $item->data_nascimento);
+                                $data_tratada = $data[2] . '-' . $data[1] . '-' . $data[0];
+                                echo $data_tratada;
+                            ?>
+                        </td>
+                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">
+                            {{ $item->naturalidade }}</td>
+                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">
+                            {{ $item->nome_pai }}</td>
+                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">
+                            {{ $item->nome_mae }}</td>
+                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">
+                            <?php
+                                $data = explode('-', $item->data_emissao);
+                                $data_tratada = $data[2] . '-' . $data[1] . '-' . $data[0];
+                                echo $data_tratada;
+                            ?>
+                        </td>
+                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">
+                            <?php
+                                $data = explode('-', $item->data_validade);
+                                $data_tratada = $data[2] . '-' . $data[1] . '-' . $data[0];
+                                echo $data_tratada;
+                            ?>
+                        </td>
+                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">
+                            @if ($item->sexo == 'M')
+                                Masculino
+                            @else
+                                Femenino
+                            @endif
+                        </td>
+                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">
+                            {{ Str::ucfirst($item->estado_civil) }}</td>
+                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">
+                            {{ $item->altura }}</td>
+                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">
+                            {{ $item->residencia }}</td>
+                        <td class="border text-center" style="min-width: 200px; white-space: nowrap">
+                            {{ $item->provincia }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        
+
     </div>
 </div>
-
-

@@ -20,6 +20,7 @@
             </thead>
 
             <tbody style="background: crimson; color: yellow">
+                <?php $contador = 0; ?>
                 @foreach ($resultado as $item)
                     <tr>
                         <td class="border text-center" style="min-width: 200px; white-space: nowrap">{{ $item->nome }}
@@ -68,10 +69,15 @@
                             {{ $item->residencia }}</td>
                         <td class="border text-center" style="min-width: 200px; white-space: nowrap">
                             {{ $item->provincia }}</td>
+                        <?php $contador++; ?>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+
+        @if ($contador == 0)
+            <h4 class="text-center p-2 " style="background: crimson; color: white">Nenhuma informação encontrada</h4>
+        @endif
 
         {{ $resultado->links() }}
 

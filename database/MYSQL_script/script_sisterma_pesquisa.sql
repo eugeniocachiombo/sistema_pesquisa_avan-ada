@@ -1,7 +1,7 @@
 
-create database sistema_pesquisa;
+create database sistema_pesquisa_avancada;
 
-use sistema_pesquisa;
+use sistema_pesquisa_avancada;
 
 create table cidadao_nacional (
     id int primary key auto_increment not null,

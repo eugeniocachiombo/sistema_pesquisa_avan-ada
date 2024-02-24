@@ -16,57 +16,31 @@ class CidadaoNacionalController extends Controller
 
     public function pesquisarDadosPessoais(Request $request)
     {
-        $input_nome = $request->input("nome");
-        $input_numero_bi = $request->input("numero_bi");
-        $input_naturalidade = $request->input("naturalidade");
-        $input_nome_pai = $request->input("nome_pai");
-        $input_nome_mae = $request->input("nome_mae");
-        $input_sexo = $request->input("sexo");
-        $input_estado_civil = $request->input("estado_civil");
-        $input_altura = $request->input("altura");
-        $input_residencia = $request->input("residencia");
-        $input_provincia = $request->input("provincia");
+        $nome = $request->input("nome");
+        $numero_bi = $request->input("numero_bi");
+        $naturalidade = $request->input("naturalidade");
+        $nome_pai = $request->input("nome_pai");
+        $nome_mae = $request->input("nome_mae");
+        $sexo = $request->input("sexo");
+        $estado_civil = $request->input("estado_civil");
+        $altura = $request->input("altura");
+        $residencia = $request->input("residencia");
+        $provincia = $request->input("provincia");
 
-        $input_mes_emissao_inicial = $request->input("mes_emissao_inicial");
-        $input_ano_emissao_inicial = $request->input("ano_emissao_inicial");
-        $input_mes_emissao_terminal = $request->input("mes_emissao_terminal");
-        $input_ano_emissao_terminal = $request->input("ano_emissao_terminal");
+        $mes_emissao_inicial = $request->input("mes_emissao_inicial");
+        $ano_emissao_inicial = $request->input("ano_emissao_inicial");
+        $mes_emissao_terminal = $request->input("mes_emissao_terminal");
+        $ano_emissao_terminal = $request->input("ano_emissao_terminal");
 
-        $input_mes_validade_inicial = $request->input("mes_validade_inicial");
-        $input_ano_validade_inicial = $request->input("ano_validade_inicial");
-        $input_mes_validade_terminal = $request->input("mes_validade_terminal");
-        $input_ano_validade_terminal = $request->input("ano_validade_terminal");
+        $mes_validade_inicial = $request->input("mes_validade_inicial");
+        $ano_validade_inicial = $request->input("ano_validade_inicial");
+        $mes_validade_terminal = $request->input("mes_validade_terminal");
+        $ano_validade_terminal = $request->input("ano_validade_terminal");
 
-        $input_mes_nascimento_inicial = $request->input("mes_nascimento_inicial");
-        $input_ano_nascimento_inicial = $request->input("ano_nascimento_inicial");
-        $input_mes_nascimento_terminal = $request->input("mes_nascimento_terminal");
-        $input_ano_nascimento_terminal = $request->input("ano_nascimento_terminal");
-
-        $nome = $input_nome ? $input_nome : "";
-        $numero_bi = $input_numero_bi ? $input_numero_bi : "";
-        $naturalidade = $input_naturalidade ? $input_naturalidade : "";
-        $nome_pai = $input_nome_pai ? $input_nome_pai : "";
-        $nome_mae = $input_nome_mae ? $input_nome_mae : "";
-        $sexo = $input_sexo ? $input_sexo : "";
-        $estado_civil = $input_estado_civil ? $input_estado_civil : "";
-        $altura = $input_altura ? $input_altura : "";
-        $residencia = $input_residencia ? $input_residencia : "";
-        $provincia = $input_provincia ? $input_provincia : "";
-
-        $mes_emissao_inicial = $input_mes_emissao_inicial ? $input_mes_emissao_inicial : "";
-        $ano_emissao_inicial = $input_ano_emissao_inicial ? $input_ano_emissao_inicial : "";
-        $mes_emissao_terminal = $input_mes_emissao_terminal ? $input_mes_emissao_terminal : "";
-        $ano_emissao_terminal = $input_ano_emissao_terminal ? $input_ano_emissao_terminal : "";
-
-        $mes_validade_inicial = $input_mes_validade_inicial ? $input_mes_validade_inicial : "";
-        $ano_validade_inicial = $input_ano_validade_inicial ? $input_ano_validade_inicial : "";
-        $mes_validade_terminal = $input_mes_validade_terminal ? $input_mes_validade_terminal : "";
-        $ano_validade_terminal = $input_ano_validade_terminal ? $input_ano_validade_terminal : "";
-
-        $mes_nascimento_inicial = $input_mes_nascimento_inicial ? $input_mes_nascimento_inicial : "";
-        $ano_nascimento_inicial = $input_ano_nascimento_inicial ? $input_ano_nascimento_inicial : "";
-        $mes_nascimento_terminal = $input_mes_nascimento_terminal ? $input_mes_nascimento_terminal : "";
-        $ano_nascimento_terminal = $input_ano_nascimento_terminal ? $input_ano_nascimento_terminal : "";
+        $mes_nascimento_inicial = $request->input("mes_nascimento_inicial");
+        $ano_nascimento_inicial = $request->input("ano_nascimento_inicial");
+        $mes_nascimento_terminal = $request->input("mes_nascimento_terminal");
+        $ano_nascimento_terminal = $request->input("ano_nascimento_terminal");
 
         $condicao = CidadaoNacional::query();
         $componentes = [
